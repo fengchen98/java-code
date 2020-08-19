@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class Test {
-     
+
 }
 /*    //写一个方法，将原来数组的所有元素都*2
 public static int[] fun(int[] arr){
