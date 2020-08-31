@@ -243,6 +243,77 @@ public class MyLinkedList {
         temp.next=null;
         return newHead.next;
         }
+        //检查是否是回文序列
+    public boolean chkPalindrome(){
+        if(this.head==null){
+            return false;
+        }
+        if (this.head.next==null){
+            return true;
+        }
+        //1.找到中间节点
+        Node slow=head;
+        Node fast=head;
+        while (fast!=null&&fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        //2.反转
+        Node cur=slow.next;
+        while (cur!=null){
+            Node curNext=cur.next;
+            cur.next=slow;
+            slow=cur;
+            cur=curNext;
+        }
+        //3.判断data是否相等一个从前往后走，一个从后往前走
+         while (this.head!=slow){
+             if (head.data!=slow.data){
+                return false;
+             }
+             //判断偶数节点
+             if (head.next==slow){
+                return true;
+             }
+             head=head.next;
+             slow=slow.next;
+         }
+         return  true;
+    }
+    //判断链表中是否有环
+    public boolean hasCycle(){
+        Node fast=this.head;
+        Node slow=this.head;
+        while (fast!=null&&fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+            if (slow==fast){
+                return true;
+            }
+        }
+        return false;
+    }
+    //如果一个链表有环，返回入口点，否则返回null
+    public Node detectCycle(){
+        Node fast=this.head;
+        Node slow=this.head;
+        while (fast!=null&&fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+            if (slow==fast){
+                break;
+            }
+        }
+        if (fast==null||fast.next==null){
+             return null;
+        }
+        slow=this.head;
+        while (slow!=fast){
+            fast=fast.next;
+            slow=slow.next;
+        }
+        return slow;
 
+    }
     }
 
