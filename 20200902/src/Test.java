@@ -1,5 +1,5 @@
 public class Test {
-    public static void main(String[] args) {
+    public static void main2(String[] args) {
         RealLinkedList realLinkedList=new RealLinkedList();
         realLinkedList.addFirst(1);
         realLinkedList.addFirst(2);
